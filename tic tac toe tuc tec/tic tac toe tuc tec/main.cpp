@@ -6,14 +6,42 @@
 * @author BPalash
 */
 
-#include<Windows.h>
+#include<iostream>
+#include<string>
 
-#include <SDL/SDL.h>
-#include <GL/glew.h>
+#include "GameWindow.h"
+
+using namespace std;
+
+void error_msg(string errorMsg);
+int abort_main_app();
 
 int main(int argc, char** argv)
 {
-	SDL_Init(SDL_INIT_EVERYTHING);
-
+	GameWindow gm;
+	bool _iswindowCreated = gm.initSystems();
+	if(!_iswindowCreated)
+	{
+		error_msg("Main Game Window not able to create!");
+		return abort_main_app();
+	}
+	else
+	{
+		char cHoldScreen;
+		cin >> cHoldScreen;
+	}
 	return 0;
+}
+
+void error_msg(string errorMsg)
+{
+	cout << errorMsg << endl;
+}
+
+int abort_main_app()
+{
+	int dumpIntInput;
+	cout << "Press any key to quit app..." << endl;
+	cin >> dumpIntInput;
+	return -1;
 }
