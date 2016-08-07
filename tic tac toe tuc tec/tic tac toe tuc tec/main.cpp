@@ -6,7 +6,10 @@
 * @author BPalash
 */
 
-#include <SDL\SDL.h>
+#include<Windows.h>
+
+#include <SDL/SDL.h>
+#include <GL/glew.h>
 
 int main(int argc, char** argv)
 {
