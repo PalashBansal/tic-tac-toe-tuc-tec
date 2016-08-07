@@ -29,7 +29,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameWindow.h">
+    <ClInclude Include="GameWindow.hpp">
       <Filter>Source Files\graphics</Filter>
     </ClInclude>
   </ItemGroup>

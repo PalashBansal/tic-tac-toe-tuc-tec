@@ -6,7 +6,7 @@
 * @author BPalash
 */
 
-#include "GameWindow.h"
+#include "GameWindow.hpp"
 
 
 GameWindow::GameWindow(void)
