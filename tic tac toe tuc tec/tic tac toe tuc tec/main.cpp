@@ -9,7 +9,7 @@
 #include<iostream>
 #include<string>
 
-#include "GameWindow.hpp"
+#include "graphics/GameWindow.hpp"
 
 using namespace std;
 

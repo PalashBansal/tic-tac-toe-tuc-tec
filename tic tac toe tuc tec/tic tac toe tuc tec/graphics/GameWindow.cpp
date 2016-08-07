@@ -8,7 +8,6 @@
 
 #include "GameWindow.hpp"
 
-
 GameWindow::GameWindow(void)
 :mSDLWindow(NULL),
 mScreenWidth(1024/2),
