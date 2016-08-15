@@ -22,11 +22,11 @@ public:
 	GameWindow(void);
 	~GameWindow(void);
 
-	bool CreateGameWindow(); //	Function to be supplied to client(here main)
+	void CreateGameWindow(); //	Function to be supplied to client(here main)
 	SDL_Window *mSDLWindow;	//	Instance of SDL window
 
 private:
-	bool initSystems();	//	Initialize main game window
+	void initSystems();	//	Initialize main game window
 
 	int mScreenWidth;	//	Main window width
 	int mScreenHeight;	//	Main window height
