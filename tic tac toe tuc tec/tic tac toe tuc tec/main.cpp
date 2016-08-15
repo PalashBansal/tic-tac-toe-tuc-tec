@@ -7,42 +7,60 @@
 */
 
 #include<iostream>
-#include<string>
 #include<conio.h>
+#include<string>
 
 #include<SDL/SDL.h>
 #include<GL/glew.h>
 
 #include "graphics/GameWindow.hpp"
+#include "Utility.hpp"
 
 using namespace std;
 
 enum GameState;
 
-void console_msg(string);
-int abort_main_app();
+int abort_main_appDebug();
+int abort_main_appRelease();
 void GameLoop();
 GameState ProcessInput();
+void drawTest();
+
+GameWindow gw;
+Utility utility;
 
 int main(int argc, char** argv)
 {
-	GameWindow gw;
 	bool _iswindowCreated = gw.CreateGameWindow();
 	if(!_iswindowCreated)
 	{
-		console_msg("error: Main Game Window not able to create!");
-		int abort_result=-1;
-		//abort_result = abort_main_app();	// only used in Debug mode
+		int abort_result;
+		//abort_result = abort_main_appDebug();
+		abort_result = abort_main_appRelease();
 		return abort_result;
 	}
 	else
 	{
-		console_msg("Main Game Window created!");
-		//
+		drawTest();
 		GameLoop();
-		//
 	}
 	return 0;
+}
+
+void drawTest()
+{
+	glClearDepth(1.0);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glEnableClientState(GL_COLOR_ARRAY);
+
+	glBegin(GL_TRIANGLES);
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glVertex2f(0, 0);
+	glVertex2f(0, 500);
+	glVertex2f(500, 500);
+	glEnd();
+	
+	SDL_GL_SwapWindow(gw.mSDLWindow);
 }
 
 enum GameState
@@ -74,19 +92,23 @@ GameState ProcessInput()
 		case SDL_MOUSEMOTION:
 			cout << sdlEvent.motion.x << ", " << sdlEvent.motion.y << endl;
 			break;
+
 		}
 	}
 	return temp_gameState;
 }
 
-void console_msg(string msg)
+
+int abort_main_appDebug()
 {
-	cout << msg << endl;
+	utility.console_msg("Press any key to quit app(console)...");
+	(void)_getch();
+	SDL_Quit();
+	return -1;
 }
 
-int abort_main_app()
+int abort_main_appRelease()
 {
-	cout << "Press any key to quit app..." << endl;
-	(void)getch();
+	SDL_Quit();
 	return -1;
 }
