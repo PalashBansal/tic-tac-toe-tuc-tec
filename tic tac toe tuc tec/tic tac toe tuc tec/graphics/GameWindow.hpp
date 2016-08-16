@@ -22,13 +22,18 @@ public:
 	GameWindow(void);
 	~GameWindow(void);
 
-	void CreateGameWindow(); //	Function to be supplied to client(here main)
-	SDL_Window *mSDLWindow;	//	Instance of SDL window
+	//	Function to be supplied to client(here main)
+	void CreateGameWindow();
+	//	Instance of SDL window
+	SDL_Window *mSDLWindow;
 
 private:
-	void initSystems();	//	Initialize main game window
+	//	Initialize main game window
+	void initSystems();
 
-	int mScreenWidth;	//	Main window width
-	int mScreenHeight;	//	Main window height
+	//	Main window width
+	int mScreenWidth;
+	//	Main window height
+	int mScreenHeight;
 	SDL_Event mEvent; /// to be used
 };

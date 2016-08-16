@@ -21,13 +21,6 @@ void _consoleStatusMsg(string msg)
 	cout << "_status: " << msg << endl;
 }
 
-void _consoleErrorMsg(string msg, string funcname)
-{
-	cout << "_error: " << msg << endl;
-	const char* funcname_cstr = funcname.c_str();
-	perror(funcname_cstr);
-}
-
 void _consoleErrorMsgAndQuit(string msg, string funcname, bool isQuit)
 {
 	cout << "_error: " << msg << endl;
@@ -47,5 +40,5 @@ void _abort_main_appDebug()
 void _abort_main_appRelease()
 {
 	SDL_Quit();
-	exit(EXIT_FAILURE);// exit because of error
+	exit(EXIT_FAILURE);
 }

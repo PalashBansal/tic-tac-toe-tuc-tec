@@ -12,11 +12,6 @@
 #include "GameWindow.hpp"
 #include "..\Utility.hpp"
 
-#define S(x) #x
-#define S_(x) S(x)
-#define S__LINE__ S_(__LINE__)
-#define WHEREERROR "FILE: "+(string)__FILE__+"\nFUNCTION: "+(string)__FUNCTION__+"\nLINE: "+S__LINE__
-
 using namespace std;
 
 GameWindow::GameWindow(void)
@@ -42,17 +37,17 @@ void GameWindow::initSystems()
 	SDL_Init(SDL_INIT_EVERYTHING);
 	mSDLWindow = SDL_CreateWindow("tic tac toe tuc tec", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, mScreenWidth, mScreenHeight, SDL_WINDOW_OPENGL);	// Open Window
 	if(mSDLWindow==nullptr)
-		_consoleErrorMsgAndQuit("Main Game Window could not be created!", WHEREERROR , true);
+		_consoleErrorMsgAndQuit("Main Game Window could not be created!", WHEREERROR);
 	_consoleStatusMsg("Main Game Window created!");
 	//	Create OpenGL context
 	SDL_GLContext glContext =SDL_GL_CreateContext(mSDLWindow);
 	if(glContext == nullptr)
-		_consoleErrorMsgAndQuit("SDL_GL Context could not be created!", WHEREERROR, true);
+		_consoleErrorMsgAndQuit("SDL_GL Context could not be created!", WHEREERROR);
 	_consoleStatusMsg("SDL_GL Context created!");
 	//	Initialize Glew
 	GLenum error = glewInit();
 	if(error != GLEW_OK)
-		_consoleErrorMsgAndQuit("Glew could not be initialized!", WHEREERROR, true);
+		_consoleErrorMsgAndQuit("Glew could not be initialized!", WHEREERROR);
 	_consoleStatusMsg("Glew initialized!");
 
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);// double screen(write and clear) to avoid screen flickering
